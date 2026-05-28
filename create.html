@@ -527,6 +527,26 @@
     </div>
 
   </div>
+  <script type="module">
+
+  import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQWVUB4wpormhXyA9jZ6nphU7p0_HqNaU",
+    authDomain: "bunkasai-site-maker.firebaseapp.com",
+    projectId: "bunkasai-site-maker",
+    storageBucket: "bunkasai-site-maker.firebasestorage.app",
+    messagingSenderId: "448452725817",
+    appId: "1:448452725817:web:f60d3748c3a7b7017651e8"
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  console.log("Firebase connected!");
+
+</script>
+  
 <script>
 
 function goToSite(){
