@@ -345,28 +345,38 @@
 
         <div class="input-group">
           <label>学校名</label>
-          <input type="text" placeholder="〇〇高校">
+          <input
+  type="text"
+  id="schoolName"
+  placeholder="〇〇高校"
+>
         </div>
 
         <div class="input-group">
           <label>文化祭名</label>
-          <input type="text" placeholder="文化祭2026">
+          <input type="text" 
+            id="festivalName"
+            placeholder="文化祭2026">
         </div>
 
         <div class="input-group">
           <label>クラス・団体名</label>
-          <input type="text" placeholder="3年3組">
+          <input type="text"
+            id="className"
+            placeholder="3年3組">
         </div>
 
         <div class="input-group">
           <label>出し物名</label>
-          <input type="text" placeholder="3-3 脱出ゲーム">
+          <input type="text"
+            id="eventName"
+            placeholder="3-3 脱出ゲーム">
         </div>
 
         <div class="input-group">
           <label>ジャンル</label>
 
-          <select>
+          <select id="genre">
             <option>脱出ゲーム</option>
             <option>お化け屋敷</option>
             <option>模擬店</option>
@@ -378,17 +388,23 @@
         <div class="input-group">
           <label>紹介文</label>
 
-          <textarea placeholder="紹介文を入力"></textarea>
+          <textarea 
+            id="description"
+            placeholder="紹介文を入力"></textarea>
         </div>
 
         <div class="input-group">
           <label>場所</label>
-          <input type="text" placeholder="3年3組 教室">
+          <input type="text" 
+            id="place"
+            placeholder="3年3組 教室">
         </div>
 
         <div class="input-group">
           <label>開催時間</label>
-          <input type="text" placeholder="9:00〜15:00">
+          <input type="text" 
+            id="time"
+            placeholder="9:00〜15:00">
         </div>
 
         <div class="section-title">
@@ -411,17 +427,21 @@
 
         <div class="input-group">
           <label>現在の待ち時間</label>
-          <input type="text" placeholder="30分">
+          <input type="text"
+            id="waitTime"
+            placeholder="30分">
         </div>
 
         <div class="input-group">
           <label>Instagram</label>
-          <input type="text" placeholder="@festival">
+          <input type="text" 
+            id="instagram"
+            placeholder="@festival">
         </div>
 
-        <a href="site.html" class="create-btn">
-          サイトを作成 →
-        </a>
+        <button class="create-btn" onclick="goToSite()">
+  サイトを作成 →
+</button>
 
       </div>
 
@@ -507,6 +527,64 @@
     </div>
 
   </div>
+<script>
 
+function goToSite(){
+
+  localStorage.setItem(
+    "schoolName",
+    document.getElementById("schoolName").value
+  );
+
+  localStorage.setItem(
+    "festivalName",
+    document.getElementById("festivalName").value
+  );
+
+  localStorage.setItem(
+    "className",
+    document.getElementById("className").value
+  );
+
+  localStorage.setItem(
+    "eventName",
+    document.getElementById("eventName").value
+  );
+
+  localStorage.setItem(
+    "genre",
+    document.getElementById("genre").value
+  );
+
+  localStorage.setItem(
+    "description",
+    document.getElementById("description").value
+  );
+
+  localStorage.setItem(
+    "place",
+    document.getElementById("place").value
+  );
+
+  localStorage.setItem(
+    "time",
+    document.getElementById("time").value
+  );
+
+  localStorage.setItem(
+    "waitTime",
+    document.getElementById("waitTime").value
+  );
+
+  localStorage.setItem(
+    "instagram",
+    document.getElementById("instagram").value
+  );
+
+  window.location.href = "site.html";
+
+}
+
+</script>
 </body>
 </html>
