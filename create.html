@@ -606,10 +606,7 @@ async function goToSite(){
     document.getElementById("instagram").value
   );
 
-  window.location.href = "site.html";
-
-}
-    const docRef = await addDoc(
+  const docRef = await addDoc(
 
   collection(db, "sites"),
 
@@ -649,6 +646,10 @@ async function goToSite(){
 );
 
 console.log("保存成功！", docRef.id);
+  window.location.href = "site.html";
+
+}
+    
     window.goToSite = goToSite;
 
 </script>
