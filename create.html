@@ -532,6 +532,13 @@
   import { initializeApp }
   from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
+    import {
+  getFirestore,
+  addDoc,
+  collection
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
   const firebaseConfig = {
     apiKey: "AIzaSyAQWVUB4wpormhXyA9jZ6nphU7p0_HqNaU",
     authDomain: "bunkasai-site-maker.firebaseapp.com",
@@ -544,9 +551,10 @@
   const app = initializeApp(firebaseConfig);
 
   console.log("Firebase connected!");
+    
+const db = getFirestore(app);
 
-
-function goToSite(){
+async function goToSite(){
 
   localStorage.setItem(
     "schoolName",
@@ -601,6 +609,46 @@ function goToSite(){
   window.location.href = "site.html";
 
 }
+    const docRef = await addDoc(
+
+  collection(db, "sites"),
+
+  {
+    schoolName:
+      document.getElementById("schoolName").value,
+
+    festivalName:
+      document.getElementById("festivalName").value,
+
+    className:
+      document.getElementById("className").value,
+
+    eventName:
+      document.getElementById("eventName").value,
+
+    genre:
+      document.getElementById("genre").value,
+
+    description:
+      document.getElementById("description").value,
+
+    place:
+      document.getElementById("place").value,
+
+    time:
+      document.getElementById("time").value,
+
+    waitTime:
+      document.getElementById("waitTime").value,
+
+    instagram:
+      document.getElementById("instagram").value
+
+  }
+
+);
+
+console.log("保存成功！", docRef.id);
     window.goToSite = goToSite;
 
 </script>
