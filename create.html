@@ -606,7 +606,48 @@ async function goToSite(){
     document.getElementById("instagram").value
   );
 
-  const docRef = await addDoc(
+  /*
+const docRef = await addDoc(
+
+  collection(db, "sites"),
+
+  {
+    schoolName:
+      document.getElementById("schoolName").value,
+
+    festivalName:
+      document.getElementById("festivalName").value,
+
+    className:
+      document.getElementById("className").value,
+
+    eventName:
+      document.getElementById("eventName").value,
+
+    genre:
+      document.getElementById("genre").value,
+
+    description:
+      document.getElementById("description").value,
+
+    place:
+      document.getElementById("place").value,
+
+    time:
+      document.getElementById("time").value,
+
+    waitTime:
+      document.getElementById("waitTime").value,
+
+    instagram:
+      document.getElementById("instagram").value
+
+  }
+
+);
+
+console.log("保存成功！", docRef.id);
+*/
 
   collection(db, "sites"),
 
