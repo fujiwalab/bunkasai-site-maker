@@ -239,36 +239,69 @@
 
   </div>
 
-  <script>
+ <script type="module">
 
-    document.getElementById("schoolName").innerText =
-      localStorage.getItem("schoolName");
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-    document.getElementById("eventName").innerText =
-      localStorage.getItem("eventName");
+import {
+  getFirestore,
+  doc,
+  getDoc
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-    document.getElementById("className").innerText =
-      localStorage.getItem("className");
+const firebaseConfig = {
+  apiKey: "AIzaSyAQWVUB4wpormhXyA9jZ6nphU7p0_HqNaU",
+  authDomain: "bunkasai-site-maker.firebaseapp.com",
+  projectId: "bunkasai-site-maker",
+  storageBucket: "bunkasai-site-maker.firebasestorage.app",
+  messagingSenderId: "448452725817",
+  appId: "1:448452725817:web:f60d3748c3a7b7017651e8"
+};
 
-    document.getElementById("genre").innerText =
-      localStorage.getItem("genre");
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-    document.getElementById("place").innerText =
-      localStorage.getItem("place");
+const params =
+  new URLSearchParams(window.location.search);
 
-    document.getElementById("time").innerText =
-      localStorage.getItem("time");
+const id = params.get("id");
 
-    document.getElementById("description").innerText =
-      localStorage.getItem("description");
+const snap = await getDoc(
+  doc(db, "sites", id)
+);
 
-    document.getElementById("waitTime").innerText =
-      localStorage.getItem("waitTime");
+const data = snap.data();
 
-    document.getElementById("instagram").innerText =
-      localStorage.getItem("instagram");
+document.getElementById("schoolName").innerText =
+  data.schoolName || "";
 
-  </script>
+document.getElementById("eventName").innerText =
+  data.eventName || "";
+
+document.getElementById("className").innerText =
+  data.className || "";
+
+document.getElementById("genre").innerText =
+  data.genre || "";
+
+document.getElementById("place").innerText =
+  data.place || "";
+
+document.getElementById("time").innerText =
+  data.time || "";
+
+document.getElementById("description").innerText =
+  data.description || "";
+
+document.getElementById("waitTime").innerText =
+  data.waitTime || "";
+
+document.getElementById("instagram").innerText =
+  data.instagram || "";
+
+</script>
 
 </body>
 </html>
