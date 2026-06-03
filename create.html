@@ -649,7 +649,15 @@ const docRef = await addDoc(
 console.log("保存成功！", docRef.id);
 */
 
-  
+  const docRef = await addDoc(
+  collection(db, "sites"),
+  {
+    schoolName:
+      document.getElementById("schoolName").value
+  }
+);
+
+console.log(docRef.id);
   window.location.href = "site.html";
 
 }
