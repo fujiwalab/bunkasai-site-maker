@@ -653,9 +653,39 @@ console.log("保存成功！", docRef.id);
   collection(db, "sites"),
   {
     schoolName:
-      document.getElementById("schoolName").value
+      document.getElementById("schoolName").value,
+
+    festivalName:
+      document.getElementById("festivalName").value,
+
+    className:
+      document.getElementById("className").value,
+
+    eventName:
+      document.getElementById("eventName").value,
+
+    genre:
+      document.getElementById("genre").value,
+
+    description:
+      document.getElementById("description").value,
+
+    place:
+      document.getElementById("place").value,
+
+    time:
+      document.getElementById("time").value,
+
+    waitTime:
+      document.getElementById("waitTime").value,
+
+    instagram:
+      document.getElementById("instagram").value
   }
 );
+
+window.location.href =
+  "site.html?id=" + docRef.id;
 
 window.location.href =
   "site.html?id=" + docRef.id;
