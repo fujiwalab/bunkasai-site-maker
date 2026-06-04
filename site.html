@@ -200,7 +200,19 @@
       </div>
 
     </div>
+<div class="info">
 
+  <div class="label">
+    作成日時
+  </div>
+
+  <div
+    class="value"
+    id="createdAt"
+  >
+  </div>
+
+</div>
     <div class="info">
 
       <div class="label">
@@ -237,7 +249,23 @@
       Instagramを見る
     </a>
 
+  <div class="info">
+
+  <div class="label">
+    このサイトのURL
   </div>
+
+  <input
+    id="siteUrl"
+    readonly
+  >
+
+  <button onclick="copyUrl()">
+    URLをコピー
+  </button>
+
+</div>
+    </div>
 
  <script type="module">
 
@@ -300,7 +328,24 @@ document.getElementById("waitTime").innerText =
 
 document.getElementById("instagram").innerText =
   data.instagram || "";
+   
+   document.getElementById("instagram").href =
+  data.instagram || "#";
+   
+document.getElementById("createdAt").innerText =
+  data.createdAt || "";
 
+   document.getElementById("siteUrl").value =
+  window.location.href;
+
+window.copyUrl = function(){
+
+  navigator.clipboard.writeText(
+    window.location.href
+  );
+
+  alert("コピーしました！")
+}
 </script>
 
 </body>
