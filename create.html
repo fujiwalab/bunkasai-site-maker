@@ -686,6 +686,7 @@ console.log("保存成功！", docRef.id);
 const url =
   "https://fujiwalab.github.io/bunkasai-site-maker/site.html?id="
   + docRef.id;
+ window.location.href = url; 
 
 document.getElementById("resultBox").innerHTML = `
 <div style="
@@ -715,7 +716,7 @@ border-radius:20px;
   </button>
 </div>
 `;
-    
+}   // 
     window.goToSite = goToSite;
 
 </script>
