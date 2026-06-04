@@ -326,7 +326,7 @@
     <div class="title">
 
       <h1>
-        🎉 文化祭サイトメーカー
+        文化祭サイトメーカー
       </h1>
 
       <p>
@@ -442,7 +442,7 @@
         <button class="create-btn" onclick="goToSite()">
   サイトを作成 →
 </button>
-
+<div id="resultBox"></div>
       </div>
 
       <div class="preview-box">
@@ -515,7 +515,7 @@
             </div>
 
             <a href="" class="insta-btn">
-              📸 Instagramを見る
+               Instagramを見る
             </a>
 
           </div>
@@ -683,14 +683,38 @@ console.log("保存成功！", docRef.id);
       document.getElementById("instagram").value
   }
 );
+const url =
+  "https://fujiwalab.github.io/bunkasai-site-maker/site.html?id="
+  + docRef.id;
 
-window.location.href =
-  "site.html?id=" + docRef.id;
+document.getElementById("resultBox").innerHTML = `
+<div style="
+margin-top:20px;
+background:white;
+padding:20px;
+border-radius:20px;
+">
+  <b>サイト完成！</b><br><br>
 
-window.location.href =
-  "site.html?id=" + docRef.id;
+  <input
+    value="${url}"
+    style="
+      width:100%;
+      padding:10px;
+    "
+  >
 
-}
+  <button
+    onclick="navigator.clipboard.writeText('${url}')"
+    style="
+      margin-top:10px;
+      padding:10px 20px;
+    "
+  >
+    コピー
+  </button>
+</div>
+`;
     
     window.goToSite = goToSite;
 
