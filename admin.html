@@ -128,12 +128,94 @@ textarea{
 
 <button
 class="save-btn"
-onclick="saveData()"
+onclick="saveSite()"
 >
 保存する
 </button>
 
 </div>
+<script type="module">
 
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  updateDoc
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAQWVUB4wpormhXyA9jZ6nphU7p0_HqNaU",
+  authDomain: "bunkasai-site-maker.firebaseapp.com",
+  projectId: "bunkasai-site-maker",
+  storageBucket: "bunkasai-site-maker.firebasestorage.app",
+  messagingSenderId: "448452725817",
+  appId: "1:448452725817:web:f60d3748c3a7b7017651e8"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const params =
+  new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+const snap = await getDoc(
+  doc(db, "sites", id)
+);
+
+const data = snap.data();
+
+document.getElementById("eventName").value =
+  data.eventName || "";
+
+document.getElementById("description").value =
+  data.description || "";
+
+document.getElementById("place").value =
+  data.place || "";
+
+document.getElementById("time").value =
+  data.time || "";
+
+document.getElementById("waitTime").value =
+  data.waitTime || "";
+
+document.getElementById("instagram").value =
+  data.instagram || "";
+
+window.saveSite = async function(){
+
+  await updateDoc(
+    doc(db, "sites", id),
+    {
+      eventName:
+        document.getElementById("eventName").value,
+
+      description:
+        document.getElementById("description").value,
+
+      place:
+        document.getElementById("place").value,
+
+      time:
+        document.getElementById("time").value,
+
+      waitTime:
+        document.getElementById("waitTime").value,
+
+      instagram:
+        document.getElementById("instagram").value
+    }
+  );
+
+  alert("保存しました！");
+};
+
+</script>
 </body>
 </html>
