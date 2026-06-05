@@ -95,6 +95,20 @@ textarea{
 <h1>
 文化祭サイト管理
 </h1>
+  <div class="input-group">
+<label>学校名</label>
+<input id="schoolName">
+</div>
+
+<div class="input-group">
+<label>文化祭名</label>
+<input id="festivalName">
+</div>
+
+<div class="input-group">
+<label>クラス名</label>
+<input id="className">
+</div>
 
 <div class="input-group">
 <label>出し物名</label>
@@ -170,6 +184,15 @@ const snap = await getDoc(
 
 const data = snap.data();
 
+document.getElementById("schoolName").value =
+  data.schoolName || "";
+
+document.getElementById("festivalName").value =
+  data.festivalName || "";
+
+document.getElementById("className").value =
+  data.className || "";  
+
 document.getElementById("eventName").value =
   data.eventName || "";
 
@@ -192,7 +215,15 @@ window.saveSite = async function(){
 
   await updateDoc(
     doc(db, "sites", id),
-    {
+    {schoolName:
+  document.getElementById("schoolName").value,
+
+festivalName:
+  document.getElementById("festivalName").value,
+
+className:
+  document.getElementById("className").value,
+     
       eventName:
         document.getElementById("eventName").value,
 
