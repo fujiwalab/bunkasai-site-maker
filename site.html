@@ -249,10 +249,10 @@
       Instagramを見る
     </a>
 
-  <div class="info">
+<div class="info">
 
   <div class="label">
-    このサイトのURL
+    サイトURL
   </div>
 
   <input
@@ -260,12 +260,29 @@
     readonly
   >
 
-  <button onclick="copyUrl()">
-    URLをコピー
+  <button onclick="copySiteUrl()">
+    サイトURLをコピー
   </button>
 
 </div>
-    </div>
+
+<div class="info">
+
+  <div class="label">
+    管理URL
+  </div>
+
+  <input
+    id="adminUrl"
+    readonly
+  >
+
+  <button onclick="copyAdminUrl()">
+    管理URLをコピー
+  </button>
+
+</div>
+</div>
 
  <script type="module">
 
@@ -335,17 +352,33 @@ document.getElementById("instagram").innerText =
 document.getElementById("createdAt").innerText =
   data.createdAt || "";
 
-   document.getElementById("siteUrl").value =
+document.getElementById("siteUrl").value =
   window.location.href;
 
-window.copyUrl = function(){
-
-  navigator.clipboard.writeText(
-    window.location.href
+document.getElementById("adminUrl").value =
+  window.location.href.replace(
+    "site.html",
+    "admin.html"
   );
 
-  alert("コピーしました！")
-}
+window.copySiteUrl = function(){
+
+  navigator.clipboard.writeText(
+    document.getElementById("siteUrl").value
+  );
+
+  alert("サイトURLをコピーしました！");
+};
+
+window.copyAdminUrl = function(){
+
+  navigator.clipboard.writeText(
+    document.getElementById("adminUrl").value
+  );
+
+  alert("管理URLをコピーしました！");
+};
+  
 </script>
 
 </body>
