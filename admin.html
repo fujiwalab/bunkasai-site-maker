@@ -287,6 +287,22 @@ className:
   alert("保存しました！");
 };
 
+window.togglePassword = function(){
+
+  const passwordBox =
+    document.getElementById("password");
+
+  if(passwordBox.type === "password"){
+
+    passwordBox.type = "text";
+
+  }else{
+
+    passwordBox.type = "password";
+
+  }
+
+};
 </script>
 </body>
 </html>
