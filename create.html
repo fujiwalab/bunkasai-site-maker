@@ -438,7 +438,15 @@
             id="instagram"
             placeholder="@festival">
         </div>
+<div class="input-group">
+  <label>管理パスワード</label>
 
+  <input
+    type="password"
+    id="password"
+    placeholder="好きなパスワード"
+  >
+</div>
         <button class="create-btn" onclick="goToSite()">
   サイトを作成 →
 </button>
@@ -606,49 +614,6 @@ async function goToSite(){
     document.getElementById("instagram").value
   );
 
-  /*
-const docRef = await addDoc(
-
-  collection(db, "sites"),
-
-  {
-    schoolName:
-      document.getElementById("schoolName").value,
-
-    festivalName:
-      document.getElementById("festivalName").value,
-
-    className:
-      document.getElementById("className").value,
-
-    eventName:
-      document.getElementById("eventName").value,
-
-    genre:
-      document.getElementById("genre").value,
-
-    description:
-      document.getElementById("description").value,
-
-    place:
-      document.getElementById("place").value,
-
-    time:
-      document.getElementById("time").value,
-
-    waitTime:
-      document.getElementById("waitTime").value,
-
-    instagram:
-      document.getElementById("instagram").value
-
-  }
-
-);
-
-console.log("保存成功！", docRef.id);
-*/
-
   const docRef = await addDoc(
   collection(db, "sites"),
   {
@@ -681,6 +646,9 @@ console.log("保存成功！", docRef.id);
 
    instagram:
   document.getElementById("instagram").value,
+
+    password:
+  document.getElementById("password").value,
 
 createdAt:
   new Date().toLocaleString("ja-JP")
