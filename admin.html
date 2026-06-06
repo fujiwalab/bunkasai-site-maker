@@ -183,6 +183,18 @@ const snap = await getDoc(
 );
 
 const data = snap.data();
+  const inputPassword = prompt(
+  "管理パスワードを入力してください"
+);
+
+if(inputPassword !== data.password){
+
+  alert("パスワードが違います");
+
+  location.href =
+    "site.html?id=" + id;
+
+}
 
 document.getElementById("schoolName").value =
   data.schoolName || "";
