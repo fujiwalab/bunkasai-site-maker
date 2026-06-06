@@ -213,6 +213,20 @@
   </div>
 
 </div>
+<div class="info">
+
+  <div class="label">
+    最終更新
+  </div>
+
+  <div
+    class="value"
+    id="updatedAt"
+  >
+  </div>
+
+</div>
+    
     <div class="info">
 
       <div class="label">
@@ -351,6 +365,9 @@ document.getElementById("instagram").innerText =
    
 document.getElementById("createdAt").innerText =
   data.createdAt || "";
+
+   document.getElementById("updatedAt").innerText =
+  data.updatedAt || "未更新";
 
 document.getElementById("siteUrl").value =
   window.location.href;
