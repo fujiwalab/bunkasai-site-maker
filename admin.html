@@ -140,6 +140,25 @@ textarea{
 <input id="instagram">
 </div>
 
+  <div class="input-group">
+<label>管理パスワード</label>
+
+<input
+  id="password"
+  type="password"
+>
+
+<label style="margin-top:10px;">
+  <input
+    type="checkbox"
+    onclick="togglePassword()"
+    style="width:auto;"
+  >
+  パスワードを表示
+</label>
+
+</div>
+
 <button
 class="save-btn"
 onclick="saveSite()"
@@ -223,6 +242,9 @@ document.getElementById("waitTime").value =
 document.getElementById("instagram").value =
   data.instagram || "";
 
+document.getElementById("password").value =
+  data.password || "";
+  
 window.saveSite = async function(){
 
   await updateDoc(
@@ -253,6 +275,9 @@ className:
 
       instagram:
         document.getElementById("instagram").value,
+
+     password:
+  document.getElementById("password").value,
 
      updatedAt:
   new Date().toLocaleString("ja-JP")
