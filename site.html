@@ -206,9 +206,25 @@
     作成日時
   </div>
 
+  
+
   <div
     class="value"
     id="createdAt"
+  >
+  </div>
+
+</div>
+
+    <div class="info">
+
+  <div class="label">
+    アクセス数
+  </div>
+
+  <div
+    class="value"
+    id="views"
   >
   </div>
 
@@ -353,6 +369,14 @@ const snap = await getDoc(
 );
 
 const data = snap.data();
+   await updateDoc(
+  doc(db, "sites", id),
+  {
+    views: (data.views || 0) + 1
+  }
+);
+
+data.views = (data.views || 0) + 1;
 
 document.getElementById("schoolName").innerText =
   data.schoolName || "";
@@ -383,6 +407,9 @@ document.getElementById("instagram").innerText =
    
    document.getElementById("instagram").href =
   data.instagram || "#";
+
+   document.getElementById("views").innerText =
+  data.views || 0;
    
 document.getElementById("createdAt").innerText =
   data.createdAt || "";
