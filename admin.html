@@ -139,6 +139,18 @@ textarea{
 <label>Instagram</label>
 <input id="instagram">
 </div>
+  <div class="input-group">
+
+<label>
+  <input
+    type="checkbox"
+    id="isPublic"
+    style="width:auto;"
+  >
+  サイトを公開する
+</label>
+
+</div>
 
   <div class="input-group">
 <label>管理パスワード</label>
@@ -244,7 +256,9 @@ document.getElementById("instagram").value =
 
 document.getElementById("password").value =
   data.password || "";
-  
+
+  document.getElementById("isPublic").checked =
+  data.isPublic ?? true;
 window.saveSite = async function(){
 
   await updateDoc(
