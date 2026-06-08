@@ -369,6 +369,21 @@ const snap = await getDoc(
 );
 
 const data = snap.data();
+   if(data.isPublic === false){
+
+  document.body.innerHTML = `
+    <div style="
+      text-align:center;
+      margin-top:100px;
+      font-size:30px;
+      font-weight:bold;
+    ">
+      現在準備中です
+    </div>
+  `;
+
+  throw new Error("非公開");
+}
    await updateDoc(
   doc(db, "sites", id),
   {
