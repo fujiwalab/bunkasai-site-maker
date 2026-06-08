@@ -210,9 +210,47 @@ onclick="saveSite()"
 >
 保存する
 </button>
-    </div>
 
 </div>
+
+  <div
+  id="accessPage"
+  style="display:none;"
+>
+
+<h2>アクセス情報</h2>
+
+<p>
+総アクセス数：
+<span id="viewsInfo"></span>
+</p>
+
+<p>
+作成日時：
+<span id="createdInfo"></span>
+</p>
+
+<p>
+更新日時：
+<span id="updatedInfo"></span>
+</p>
+
+</div>
+
+<div
+  id="settingPage"
+  style="display:none;"
+>
+
+<h2>サイト設定</h2>
+
+<p>
+公開状態：
+<span id="publicInfo"></span>
+</p>
+
+</div>
+  </div>
 <script type="module">
 
 import { initializeApp }
@@ -293,6 +331,18 @@ document.getElementById("password").value =
 
   document.getElementById("isPublic").checked =
   data.isPublic ?? true;
+
+  document.getElementById("viewsInfo").innerText =
+  data.views || 0;
+
+document.getElementById("createdInfo").innerText =
+  data.createdAt || "";
+
+document.getElementById("updatedInfo").innerText =
+  data.updatedAt || "";
+
+document.getElementById("publicInfo").innerText =
+  data.isPublic ? "公開中" : "非公開";
 window.saveSite = async function(){
 
   await updateDoc(
@@ -352,6 +402,42 @@ window.togglePassword = function(){
     passwordBox.type = "password";
 
   }
+
+};
+
+  const editPage =
+  document.getElementById("editPage");
+
+const accessPage =
+  document.getElementById("accessPage");
+
+const settingPage =
+  document.getElementById("settingPage");
+
+document.getElementById("editTab").onclick =
+function(){
+
+  editPage.style.display = "block";
+  accessPage.style.display = "none";
+  settingPage.style.display = "none";
+
+};
+
+document.getElementById("accessTab").onclick =
+function(){
+
+  editPage.style.display = "none";
+  accessPage.style.display = "block";
+  settingPage.style.display = "none";
+
+};
+
+document.getElementById("settingTab").onclick =
+function(){
+
+  editPage.style.display = "none";
+  accessPage.style.display = "none";
+  settingPage.style.display = "block";
 
 };
 </script>
