@@ -101,6 +101,11 @@ textarea{
   cursor:pointer;
 }
 
+  .tabs button.active{
+  background:#ff7b00;
+  color:white;
+}
+
 </style>
 </head>
 
@@ -181,37 +186,7 @@ textarea{
 <label>Instagram</label>
 <input id="instagram">
 </div>
-  <div class="input-group">
-
-<label>
-  <input
-    type="checkbox"
-    id="isPublic"
-    style="width:auto;"
-  >
-  サイトを公開する
-</label>
-
-</div>
-
-  <div class="input-group">
-<label>管理パスワード</label>
-
-<input
-  id="password"
-  type="password"
->
-
-<label style="margin-top:10px;">
-  <input
-    type="checkbox"
-    onclick="togglePassword()"
-    style="width:auto;"
-  >
-  パスワードを表示
-</label>
-
-</div>
+  
 
 <button
 class="save-btn"
@@ -253,10 +228,43 @@ onclick="saveSite()"
 
 <h2>サイト設定</h2>
 
-<p>
-公開状態：
-<span id="publicInfo"></span>
-</p>
+  <div class="input-group">
+
+<label>
+  <input
+    type="checkbox"
+    id="isPublic"
+    style="width:auto;"
+  >
+  サイトを公開する
+</label>
+
+</div>
+
+  <div class="input-group">
+<label>管理パスワード</label>
+
+<input
+  id="password"
+  type="password"
+>
+
+<label style="margin-top:10px;">
+  <input
+    type="checkbox"
+    onclick="togglePassword()"
+    style="width:auto;"
+  >
+  パスワードを表示
+</label>
+</div>
+   <button
+class="save-btn"
+onclick="saveSite()"
+>
+保存する
+</button>
+
 
 </div>
   </div>
@@ -350,8 +358,7 @@ document.getElementById("createdInfo").innerText =
 document.getElementById("updatedInfo").innerText =
   data.updatedAt || "";
 
-document.getElementById("publicInfo").innerText =
-  data.isPublic ? "公開中" : "非公開";
+
 window.saveSite = async function(){
 
   await updateDoc(
@@ -413,7 +420,18 @@ window.togglePassword = function(){
   }
 
 };
+function resetTabs(){
 
+  document.getElementById("editTab")
+    .classList.remove("active");
+
+  document.getElementById("accessTab")
+    .classList.remove("active");
+
+  document.getElementById("settingTab")
+    .classList.remove("active");
+
+}
   const editPage =
   document.getElementById("editPage");
 
@@ -426,6 +444,9 @@ const settingPage =
 document.getElementById("editTab").onclick =
 function(){
 
+  resetTabs();
+  this.classList.add("active");
+
   editPage.style.display = "block";
   accessPage.style.display = "none";
   settingPage.style.display = "none";
@@ -434,6 +455,9 @@ function(){
 
 document.getElementById("accessTab").onclick =
 function(){
+
+  resetTabs();
+  this.classList.add("active");
 
   editPage.style.display = "none";
   accessPage.style.display = "block";
@@ -444,11 +468,18 @@ function(){
 document.getElementById("settingTab").onclick =
 function(){
 
+  resetTabs();
+  this.classList.add("active");
+
   editPage.style.display = "none";
   accessPage.style.display = "none";
   settingPage.style.display = "block";
 
 };
+
+  document.getElementById("editTab")
+  .classList.add("active");
+  
 </script>
 </body>
 </html>
